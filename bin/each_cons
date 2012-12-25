@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# -*- ruby -*-
+
+require 'optparse'
+
+opt = OptionParser.new
+opt.on("-p [STR]", "pads the remainder of iterating with STR.") { |pad| @is_p = true; @pad = pad }
+opt.on("-n N", "Number of elements for consecutive iterating.") { |n| @n = Integer(n) }
+opt.parse!
+
+@pad ||= ''
+@n ||= 2
+
+items = []
+
+while a = gets
+  items << a
+
+  if @n == items.length
+    puts items
+    items.shift
+  end
+end
+
+if @is_p
+  until items.empty?
+    puts (items + Array.new(@n - items.length) { @pad })
+    items.shift
+  end
+end
