@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# -*- ruby -*-
+
+require 'optparse'
+
+opt = OptionParser.new
+opt.on("--base N", "Base of count. (default: 0)") { |s| @base = Integer(s) }
+opt.on("--step N", "Step of count. (default: 1)") { |s| @step = Integer(s) }
+opt.parse!
+
+@base ||= 0
+@step ||= 1
+
+i = @base
+
+while a = gets
+  puts a
+  puts i
+  i += @step
+end
